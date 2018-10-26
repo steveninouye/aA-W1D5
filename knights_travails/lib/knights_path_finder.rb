@@ -19,24 +19,27 @@ class KnightPathFinder
     @start_pos = start_pos
     @pos = start_pos
     @move_tree = #???
-    @visited_positions = []
+    @visited_positions = [start_pos]
+  end
+
+  def new_move_positions(pos)
+    moves = self.class.valid_moves(pos)
+    moves.reject { |move| @visited_positions.include?(move)}
   end
 
   def build_move_tree
 
   end
 
-  def self.valid_moves(pos, visited_positions)
+  def self.valid_moves(pos)
     current_row, current_col = pos
     potential_moves = []
-    byebug
     KNIGHT_MOVES_DELTA.each do |delta|
       row_delta, col_delta = delta
       new_row = current_row + row_delta
       new_col = current_col + col_delta
       if (new_row).between?(0, 7) &&
-         (new_col).between?(0, 7) &&
-         !visited_positions.include?([new_row, new_col])
+         (new_col).between?(0, 7)
          potential_moves << [new_row, new_col]
       end
     end
