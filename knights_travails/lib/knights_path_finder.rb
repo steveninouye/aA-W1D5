@@ -24,7 +24,9 @@ class KnightPathFinder
 
   def new_move_positions(pos)
     moves = self.class.valid_moves(pos)
-    moves.reject { |move| @visited_positions.include?(move)}
+    filtered_moves = moves.reject { |move| @visited_positions.include?(move)}
+    @visited_positions.concat(filtered_moves)
+    filtered_moves
   end
 
   def build_move_tree
