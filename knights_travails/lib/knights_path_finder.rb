@@ -48,7 +48,7 @@ class KnightPathFinder
 
   def trace_path_back(node)
     path = []
-    until node.parent.nil?
+    until node.nil?
       path << node.value
       node = node.parent
     end
