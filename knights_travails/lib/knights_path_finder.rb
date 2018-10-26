@@ -1,6 +1,18 @@
 require_relative "00_tree_node"
 
 class KnightPathFinder
+
+  KNIGHT_MOVES = [
+    [2,1],
+    [2, -1],
+    [-2,1],
+    [-2,-1],
+    [-1,2],
+    [-1,-2],
+    [1,2],
+    [1,-2]
+  ]
+
   def initialize(start_pos)
     @root_node = PolyTreeNode.new(start_pos)
     @start_pos = start_pos
