@@ -1,4 +1,5 @@
 require_relative "00_tree_node"
+require "byebug"
 
 class KnightPathFinder
 
@@ -25,17 +26,18 @@ class KnightPathFinder
 
   end
 
-  def self.valid_moves(pos)
+  def self.valid_moves(pos, visited_positions)
     current_row, current_col = pos
     potential_moves = []
-    KNIGHT_MOVES.each do |delta|
+    byebug
+    KNIGHT_MOVES_DELTA.each do |delta|
       row_delta, col_delta = delta
       new_row = current_row + row_delta
       new_col = current_col + col_delta
-      if (new_row).between(0, 7) &&
-         (new_col).between(0, 7) &&
-         !@visited_positions.include?([new_row, new_col])
-         potential_move << [new_row, new_col]
+      if (new_row).between?(0, 7) &&
+         (new_col).between?(0, 7) &&
+         !visited_positions.include?([new_row, new_col])
+         potential_moves << [new_row, new_col]
       end
     end
     potential_moves
