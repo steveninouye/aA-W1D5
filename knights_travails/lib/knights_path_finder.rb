@@ -41,6 +41,10 @@ class KnightPathFinder
     end
   end
 
+  def find_path(end_pos)
+    @root_node.bfs(end_pos)
+  end
+
   def self.valid_moves(pos)
     current_row, current_col = pos
     potential_moves = []
