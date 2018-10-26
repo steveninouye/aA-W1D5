@@ -18,7 +18,6 @@ class KnightPathFinder
     @root_node = PolyTreeNode.new(start_pos)
     @start_pos = start_pos
     @pos = start_pos
-    @move_tree = #???
     @visited_positions = [start_pos]
   end
 
