@@ -10,6 +10,13 @@ class TicTacToeNode
   end
 
   def losing_node?(evaluator)
+    return true if board.over? && board.winner != evaluator
+    return false if board.over? && board.winner == evaluator
+    queue = [self]
+    until queue.empty?
+      current_node = queue.shift
+      current_node.board.winner == evaluator
+    end
   end
 
   def winning_node?(evaluator)
